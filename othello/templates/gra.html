@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gra Othello</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+<div id="logo">
+    <a href="/gra/{{ x }}/{{ y }}"><img src="{{url_for('static', filename='othello_logo.jpg')}}"></a>
+</div>
+<div id="plansza">
+    <table>
+    {% for y in gra.wymiar_y %}
+    <tr>
+        {% for x in gra.wymiar_x %}
+        <td><a href="/gra/{{ x }}/{{ y }}"><img src="{{url_for('static', filename=gra.aktualny_stan(x, y)+'.png')}}"></a></td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+<div id="aktualny_gracz">
+    <p> Aktualny gracz: {{ gra.aktualny_gracz }}</p>
+</div>
+
+<div id="wyniki">
+    <p> Czarny: {{ gra.czarny_wynik }}</p>
+    <p> Biały: {{ gra.bialy_wynik }}</p>
+</div>
+
+<div id="reset">
+    <a href="/reset"><button type="button">Nowa gra!</button></a></div>
+
+<div id="footer">
+    <p> Projekt na zaliczenie przedmiotu Interfejs Graficzny, EPI 2017/2018 - gra Othello/Reversi</p>
+</div>
+
+<div id ="komunikat">
+    <p> {{ komunikat }}</p>
+</div>
+</body>
+</html>
